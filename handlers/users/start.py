@@ -4,7 +4,7 @@ from aiogram.dispatcher.filters.builtin import CommandStart
 import requests
 from loader import dp, bot
 
-BASE_URL = 'https://fakestoreapi.com'
+BASE_URL = 'http://127.0.0.1:8000/create/'
 
 
 @dp.message_handler(CommandStart(), filters.ChatTypeFilter(types.ChatType.PRIVATE))
@@ -16,7 +16,7 @@ async def show_channels(message: types.Message):
     }
 
     responce = requests.post(f'{BASE_URL}', json=new_user)
-    if(responce.status_code==200):
+    if(responce.status_code==201):
         text = f"Assalomu alaykum, {message.from_user.full_name}\n\nBizning Task botimizga Hush kelibsiz!"
     else:
         text = f"User qo'shishda xatolik yuz berdi"
